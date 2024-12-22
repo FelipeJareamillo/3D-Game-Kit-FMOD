@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{fd4c4f12-f1d7-49ac-8e60-4f94c501acb6}">
+        <property name="assetPath">
+            <value>Ellen/Weapon/FoliageImpact/Ancient_Alien_Staff_Foliage_Impact_05.ogg</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>1.4109297052154195</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{aca052dd-49c0-4da8-a212-0f809afd3ba2}</destination>
+        </relationship>
+    </object>
+</objects>

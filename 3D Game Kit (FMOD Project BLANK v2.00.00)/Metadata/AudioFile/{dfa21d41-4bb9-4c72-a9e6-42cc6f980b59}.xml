@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{dfa21d41-4bb9-4c72-a9e6-42cc6f980b59}">
+        <property name="assetPath">
+            <value>Enemies/Spitter/Death/Spitter_Vox_Death_04.ogg</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>1.1184807256235827</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{aca052dd-49c0-4da8-a212-0f809afd3ba2}</destination>
+        </relationship>
+    </object>
+</objects>
