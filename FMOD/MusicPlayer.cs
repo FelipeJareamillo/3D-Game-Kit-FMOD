@@ -18,6 +18,8 @@ public class MusicPlayer : MonoBehaviour
     //Esta variable se puede usar para manipular los estados de reproduccion de los eventos
     PLAYBACK_STATE musicState;
 
+    float death = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +40,7 @@ public class MusicPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnDestroy()

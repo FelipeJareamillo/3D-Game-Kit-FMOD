@@ -22,10 +22,21 @@ public class SFXEllen : MonoBehaviour
 
     PlayerController playerController;
 
+    [ParamRef]
+    [SerializeField]
+    string paramRef;
+
+    EventInstance ellenDialog;
+    PLAYBACK_STATE pb;
+
     // Start is called before the first frame update
     void Start()
     {
         playerController = GetComponent<PlayerController>();
+
+        ellenDialog = RuntimeManager.CreateInstance("event:/SFX/Ellen/EllenTalk");
+        ellenDialog.getPlaybackState(out pb);
+
     }
 
     // Update is called once per frame
@@ -87,12 +98,27 @@ public class SFXEllen : MonoBehaviour
      public void LowHealthSFX()
      {
         healthLow = RuntimeManager.CreateInstance("snapshot:/Low Health");
-        healthLow.setParameterByName("Health", playerController.healthAudioChange); 
+        RuntimeManager.StudioSystem.setParameterByName(paramRef, playerController.healthAudioChange); 
         healthLow.start();
+     }
+
+    public void DialogSFX()
+    {
+        if (pb != PLAYBACK_STATE.PLAYING)
+        {
+            ellenDialog.start();
+        }
+            
+    }
+
+    void LandingSound()
+    {
+        RuntimeManager.PlayOneShot("event:/SFX/Ellen/EllenLanding", transform.position);
     }
 
     private void OnDestroy()
     {
         healthLow.release();
+        ellenDialog.release();
     }
 }

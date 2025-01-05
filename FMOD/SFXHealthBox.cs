@@ -15,6 +15,10 @@ public class SFXHealthBox : MonoBehaviour
 
     PlayerController playerController;
 
+    [ParamRef]
+    [SerializeField]
+    string paramPath;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,11 +43,11 @@ public class SFXHealthBox : MonoBehaviour
         if (collider.name == "Ellen")
         {
             RuntimeManager.AttachInstanceToGameObject(healthOpen, transform);
-            healthOpen.setParameterByName("Health", playerController.healthAudioChange);
             healthOpen.start();
             healthOpen.release();
             healthLoop.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             playerController.healthAudioChange = 5;
+            RuntimeManager.StudioSystem.setParameterByName(paramPath, playerController.healthAudioChange);
         }
     }
 }
