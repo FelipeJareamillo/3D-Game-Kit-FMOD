@@ -15,9 +15,10 @@ public class SFXHealthBox : MonoBehaviour
 
     PlayerController playerController;
 
-    [ParamRef]
-    [SerializeField]
-    string paramPath;
+    SFXEllen sfxEllen;
+
+    
+
 
     // Start is called before the first frame update
     void Start()
@@ -26,10 +27,10 @@ public class SFXHealthBox : MonoBehaviour
         healthOpen = RuntimeManager.CreateInstance(healthOpenPath);
 
         playerController = FindObjectOfType<PlayerController>();
+        sfxEllen = FindObjectOfType<SFXEllen>();
 
         RuntimeManager.AttachInstanceToGameObject(healthLoop, transform);
         healthLoop.start();
-        healthLoop.release();
     }
 
     // Update is called once per frame
@@ -41,13 +42,20 @@ public class SFXHealthBox : MonoBehaviour
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.name == "Ellen")
-        {
+        { 
             RuntimeManager.AttachInstanceToGameObject(healthOpen, transform);
-            healthOpen.start();
+            healthOpen.setParameterByName("Health", playerController.healthAudioChange);
+            healthOpen.start();          
             healthOpen.release();
             healthLoop.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             playerController.healthAudioChange = 5;
-            RuntimeManager.StudioSystem.setParameterByName(paramPath, playerController.healthAudioChange);
+            sfxEllen.LowHealthSFX();
         }
+    }
+
+
+    private void OnDestroy()
+    {
+        healthLoop.release();
     }
 }

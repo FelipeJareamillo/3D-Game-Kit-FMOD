@@ -22,9 +22,7 @@ public class SFXEllen : MonoBehaviour
 
     PlayerController playerController;
 
-    [ParamRef]
-    [SerializeField]
-    string paramRef;
+    
 
     EventInstance ellenDialog;
     PLAYBACK_STATE pb;
@@ -37,6 +35,7 @@ public class SFXEllen : MonoBehaviour
         ellenDialog = RuntimeManager.CreateInstance("event:/SFX/Ellen/EllenTalk");
         ellenDialog.getPlaybackState(out pb);
 
+        healthLow = RuntimeManager.CreateInstance("snapshot:/Low Health");
     }
 
     // Update is called once per frame
@@ -97,8 +96,7 @@ public class SFXEllen : MonoBehaviour
 
      public void LowHealthSFX()
      {
-        healthLow = RuntimeManager.CreateInstance("snapshot:/Low Health");
-        RuntimeManager.StudioSystem.setParameterByName(paramRef, playerController.healthAudioChange); 
+        healthLow.setParameterByName("Health", playerController.healthAudioChange);
         healthLow.start();
      }
 
